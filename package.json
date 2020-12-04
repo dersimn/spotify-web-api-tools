@@ -1,0 +1,57 @@
+{
+  "name": "spotify-web-api-tools",
+  "version": "0.0.1",
+  "description": "A wrapper for spotify-web-api-node to make life easier",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dersimn/spotify-web-api-tools.git"
+  },
+  "keywords": [
+    "spotify",
+    "api",
+    "music",
+    "wrapper"
+  ],
+  "author": "Simon Christmann <simon@christmann.email>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dersimn/spotify-web-api-tools/issues"
+  },
+  "homepage": "https://github.com/dersimn/spotify-web-api-tools#readme",
+  "devDependencies": {
+    "express": "^4.17.1",
+    "spotify-web-api-node": "file:../spotify-web-api-node",
+    "xo": "^0.35.0"
+  },
+  "xo": {
+    "space": 4,
+    "rules": {
+      "unicorn/prevent-abbreviations": [
+        "warn",
+        {
+          "whitelist": {
+            "tmp": true,
+            "obj": true
+          }
+        }
+      ],
+      "no-await-in-loop": "off",
+      "unicorn/import-index": [
+        "error",
+        {
+          "ignoreImports": true
+        }
+      ],
+      "import/extensions": [
+        "error",
+        "ignorePackages"
+      ],
+      "import/no-useless-path-segments": "off"
+    }
+  }
+}
