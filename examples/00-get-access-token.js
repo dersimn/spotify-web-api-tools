@@ -23,10 +23,13 @@ const scopes = [
     'user-follow-modify'
 ];
 
+const clientId = process.argv.slice(2)[0];
+const clientSecret = process.argv.slice(2)[1];
+
 const spotifyApi = new SpotifyWebApi({
     redirectUri: 'http://localhost:8888/callback',
-    clientId: process.argv.slice(2)[0],
-    clientSecret: process.argv.slice(2)[1]
+    clientId,
+    clientSecret
 });
 
 const app = express();
@@ -55,21 +58,26 @@ app.get('/callback', async (request, response) => {
         spotifyApi.setAccessToken(accessToken);
         spotifyApi.setRefreshToken(refreshToken);
 
-        console.log('Access Token:', accessToken);
-        console.log('Refresh Token:', refreshToken);
-
-        console.log(
-            `Sucessfully retreived access token. Expires in ${expiresIn} s.`
-        );
         response.send('Success! You can now close the window.');
+
+        console.log();
+        console.log('==================================================');
+        console.log(`export SPOTIFY_CLIENT_ID="${clientId}"`);
+        console.log(`export SPOTIFY_CLIENT_SECRET="${clientSecret}"`);
+        console.log(`export SPOTIFY_ACCESS_TOKEN="${accessToken}"`);
+        console.log(`export SPOTIFY_REFRESH_TOKEN="${refreshToken}"`);
+        console.log('==================================================');
 
         setInterval(async () => {
             const data = await spotifyApi.refreshAccessToken();
             const accessToken = data.body.access_token;
 
-            console.log('The access token has been refreshed!');
-            console.log('New Access Token:', accessToken);
             spotifyApi.setAccessToken(accessToken);
+
+            console.log();
+            console.log('==================================================');
+            console.log(`export SPOTIFY_ACCESS_TOKEN="${accessToken}"`);
+            console.log('==================================================');
         }, expiresIn / 2 * 1000);
     } catch (error) {
         console.error('Error getting Tokens:', error);
