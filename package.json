@@ -36,7 +36,8 @@
         {
           "whitelist": {
             "tmp": true,
-            "obj": true
+            "obj": true,
+            "args": true
           }
         }
       ],
