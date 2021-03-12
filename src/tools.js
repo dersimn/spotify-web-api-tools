@@ -97,7 +97,7 @@ class SpotifyWebApiTools {
         const playlistArray = await this.getAllUserPlaylists();
 
         // Find Playlist by Name
-        const playlistByName = playlistArray.filter(p => p.name == playlistName);
+        const playlistByName = playlistArray.filter(p => p.name === playlistName);
         if (playlistByName.length > 1) {
             throw new Error(
                 'Could not find unique Playlist with Name: ' + playlistName
