@@ -42,7 +42,7 @@
         }
       ],
       "no-await-in-loop": "off",
-      "unicorn/no-reduce": "warn",
+      "unicorn/no-array-reduce": "warn",
       "unicorn/import-index": [
         "error",
         {
