@@ -1,6 +1,6 @@
 {
   "name": "spotify-web-api-tools",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A wrapper for spotify-web-api-node to make life easier",
   "main": "index.js",
   "type": "module",
